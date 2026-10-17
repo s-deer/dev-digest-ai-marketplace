@@ -21,7 +21,6 @@ claude plugin install engineering-paved-path@dev-digest-ai-marketplace
 | `engineering-paved-path:react-best-practices` | React components, hooks, state, data fetching, anti-patterns |
 | `engineering-paved-path:react-architecture` | Where React / Next.js code lives: components, hooks, constants, business logic, data layer, boundaries |
 | `engineering-paved-path:react-testing-library` | Component and hook tests with Vitest and React Testing Library |
-| `engineering-paved-path:next-best-practices` | Next.js App Router conventions, RSC boundaries, data patterns, metadata, route handlers (background knowledge, not user-invocable) |
 | `engineering-paved-path:fastify-best-practices` | Fastify routes, plugins, schemas, errors, security headers, testing with `inject` |
 | `engineering-paved-path:onion-architecture` | Backend modules: dependency rule, ports and adapters, composition root, testing by ring |
 | `engineering-paved-path:drizzle-orm-patterns` | Drizzle schema, queries, relations, transactions, migrations |
@@ -50,16 +49,16 @@ conventions win; the skills tell Claude to map their roles onto your paths.
 
 ## Sources
 
-Third-party skills are included with their upstream source:
+Third-party skills are included with their upstream source and license. Each of these skill
+folders keeps the upstream `LICENSE` file with its copyright notice:
 
-| Skill | Upstream |
-|---|---|
-| `next-best-practices` | [vercel-labs/next-skills](https://github.com/vercel-labs/next-skills) |
-| `fastify-best-practices` | [mcollina/skills](https://github.com/mcollina/skills) |
-| `drizzle-orm-patterns` | [giuseppe-trisciuoglio/developer-kit](https://github.com/giuseppe-trisciuoglio/developer-kit) |
-| `postgresql-table-design` | [wshobson/agents](https://github.com/wshobson/agents) |
-| `typescript-expert` | [sickn33/antigravity-awesome-skills](https://github.com/sickn33/antigravity-awesome-skills) |
-| `zod` | [pproenca/dot-skills](https://github.com/pproenca/dot-skills) |
+| Skill | Upstream | License |
+|---|---|---|
+| `fastify-best-practices` | [mcollina/skills](https://github.com/mcollina/skills) | MIT |
+| `drizzle-orm-patterns` | [giuseppe-trisciuoglio/developer-kit](https://github.com/giuseppe-trisciuoglio/developer-kit) | MIT |
+| `postgresql-table-design` | [wshobson/agents](https://github.com/wshobson/agents) | MIT |
+| `typescript-expert` | [sickn33/agentic-awesome-skills](https://github.com/sickn33/agentic-awesome-skills) | MIT |
+| `zod` | [pproenca/dot-skills](https://github.com/pproenca/dot-skills) | MIT |
 
 `react-architecture` lists its own sources in `skills/react-architecture/README.md`;
 `onion-architecture` in `skills/onion-architecture/references/sources.md`; `security` in

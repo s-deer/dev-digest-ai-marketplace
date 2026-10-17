@@ -1,6 +1,6 @@
 ---
 name: react-architecture
-description: "Frontend architecture for React + Next.js App Router: where components, hooks, constants, utils/helpers, types and business logic live; how to split a component; feature folders and colocation; the API/server-state layer; Next.js server code (routes as thin composition, _private folders, 'use client' boundaries, server-only data access layer, Server Actions placement); dependency direction and boundary enforcement. Use this whenever someone asks where a file or piece of code should go, how to structure a new page/feature/module, how to break up a large component, whether something belongs in utils, lib, hooks or constants, where to put business rules or data mapping, or asks for an architecture/structure review of React or Next.js code — even if they only say 'where should this go', 'how do I split this component', or 'is this structure ok'. Not for performance, memoization, or hook bugs (use react-best-practices) or Next.js file-convention/RSC mechanics alone (use next-best-practices)."
+description: "Frontend architecture for React + Next.js App Router: where components, hooks, constants, utils/helpers, types and business logic live; how to split a component; feature folders and colocation; the API/server-state layer; Next.js server code (routes as thin composition, _private folders, 'use client' boundaries, server-only data access layer, Server Actions placement); dependency direction and boundary enforcement. Use this whenever someone asks where a file or piece of code should go, how to structure a new page/feature/module, how to break up a large component, whether something belongs in utils, lib, hooks or constants, where to put business rules or data mapping, or asks for an architecture/structure review of React or Next.js code — even if they only say 'where should this go', 'how do I split this component', or 'is this structure ok'. Not for performance, memoization, or hook bugs (use react-best-practices) or Next.js file-convention/RSC mechanics alone (use the official Next.js docs)."
 ---
 
 # React & Next.js Architecture
@@ -11,7 +11,7 @@ Every rule cites a source by number, like `[#11]`. The sources are listed in [RE
 
 Related skills:
 - `react-best-practices` covers render-level anti-patterns.
-- `next-best-practices` covers file conventions and how RSC works.
+- Next.js file conventions and RSC mechanics are covered by the official Next.js docs (sources #1–#3 in [README.md](README.md)).
 
 This skill covers placement and layering.
 

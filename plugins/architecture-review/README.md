@@ -30,7 +30,7 @@ items become mandatory checks.
 | Area | Rule source |
 |---|---|
 | Backend modules: dependency rule, ports and adapters, composition root, thin routes, tenant scoping in repositories | `engineering-paved-path:onion-architecture`, `fastify-best-practices`, `drizzle-orm-patterns` |
-| React / Next.js: placement, dependency direction, data layer, RSC boundaries | `engineering-paved-path:react-architecture`, `next-best-practices` |
+| React / Next.js: placement, dependency direction, data layer, RSC boundaries | `engineering-paved-path:react-architecture` |
 | Contracts: shared schemas change first, no ORM rows on the wire | `engineering-paved-path:zod`, onion `references/zod-contracts.md` |
 | Package boundaries and pure engine packages | the repository's own docs |
 

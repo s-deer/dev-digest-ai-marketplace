@@ -1,6 +1,6 @@
 # react-architecture — sources
 
-This skill covers **architecture only**: where code lives, how it is split, which way dependencies point, and where business logic and server code belong. It does not cover performance, hooks anti-patterns or render bugs; those live in [`react-best-practices`](../react-best-practices/SKILL.md). It does not cover Next.js file conventions or RSC mechanics; those live in [`next-best-practices`](../next-best-practices/SKILL.md).
+This skill covers **architecture only**: where code lives, how it is split, which way dependencies point, and where business logic and server code belong. It does not cover performance, hooks anti-patterns or render bugs; those live in [`react-best-practices`](../react-best-practices/SKILL.md). It does not cover Next.js file conventions or RSC mechanics; for those, use the official Next.js docs (sources #1–#3 below).
 
 Every rule in `SKILL.md` and `references/*.md` cites a source by number, e.g. `[#11]`. This file is the index for those numbers. When a rule and its source disagree, the source wins; fix the rule.
 
