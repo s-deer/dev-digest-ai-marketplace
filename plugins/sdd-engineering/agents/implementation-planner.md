@@ -2,7 +2,7 @@
 name: implementation-planner
 description: Read-only implementation planner. Use proactively after spec-creator's spec is approved and before any non-trivial feature or change that spans several layers or packages. Consumes the approved spec and produces ONLY a Development Plan (steps S1..Sn with files, AC-IDs covered, skills the implementer must follow, acceptance criteria, verification commands) grounded in the project's specs, docs, lessons files and skill routing. Never writes or rewrites specs or requirements, and never modifies files.
 tools: Read, Grep, Glob, Bash
-skills: engineering-paved-path:onion-architecture, engineering-paved-path:fastify-best-practices, engineering-paved-path:drizzle-orm-patterns, engineering-paved-path:postgresql-table-design, engineering-paved-path:react-architecture, engineering-paved-path:react-best-practices, engineering-paved-path:next-best-practices, engineering-paved-path:react-testing-library, engineering-paved-path:zod, engineering-paved-path:typescript-expert, sdd-engineering:engineering-insights
+skills: engineering-paved-path:onion-architecture, engineering-paved-path:fastify-best-practices, engineering-paved-path:drizzle-orm-patterns, engineering-paved-path:postgresql-table-design, engineering-paved-path:react-architecture, engineering-paved-path:react-best-practices, engineering-paved-path:react-testing-library, engineering-paved-path:zod, engineering-paved-path:typescript-expert, sdd-engineering:engineering-insights
 model: sonnet
 ---
 

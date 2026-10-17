@@ -1,6 +1,6 @@
 # Next.js App Router — architecture
 
-Placement and layering for App Router projects. For how RSC works and the full list of file conventions, see `next-best-practices`. Source numbers refer to [../README.md](../README.md).
+Placement and layering for App Router projects. For how RSC works and the full list of file conventions, see the official Next.js docs (sources #1–#3). Source numbers refer to [../README.md](../README.md).
 
 ## 1. `app/` is the routing layer
 

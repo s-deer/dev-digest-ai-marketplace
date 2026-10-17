@@ -2,7 +2,7 @@
 name: implementer
 description: Implements an approved Development Plan (from implementation-planner). Use when a plan file with steps S1..Sn exists and the user approved it. Applies the engineering skills routed to each touched file, writes tests, runs typecheck/tests for touched packages, and reports per step. Does not do architecture or security review and does not commit or push.
 tools: Read, Grep, Glob, Edit, Write, Bash, Skill
-skills: engineering-paved-path:onion-architecture, engineering-paved-path:fastify-best-practices, engineering-paved-path:drizzle-orm-patterns, engineering-paved-path:postgresql-table-design, engineering-paved-path:react-architecture, engineering-paved-path:react-best-practices, engineering-paved-path:next-best-practices, engineering-paved-path:react-testing-library, engineering-paved-path:zod, engineering-paved-path:typescript-expert, sdd-engineering:engineering-insights
+skills: engineering-paved-path:onion-architecture, engineering-paved-path:fastify-best-practices, engineering-paved-path:drizzle-orm-patterns, engineering-paved-path:postgresql-table-design, engineering-paved-path:react-architecture, engineering-paved-path:react-best-practices, engineering-paved-path:react-testing-library, engineering-paved-path:zod, engineering-paved-path:typescript-expert, sdd-engineering:engineering-insights
 model: sonnet
 ---
 

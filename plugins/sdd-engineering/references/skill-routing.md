@@ -17,7 +17,7 @@ name, for example `engineering-paved-path:onion-architecture`.
 | ORM schema, repositories, migrations | `drizzle-orm-patterns`, `postgresql-table-design` (PostgreSQL) |
 | Shared request/response schemas, validation of external data | `zod` |
 | React components, hooks, client state, data hooks | `react-architecture`, `react-best-practices` |
-| Next.js routes, layouts, Server Components, Server Actions, route handlers | `next-best-practices`, `react-architecture` |
+| Next.js routes, layouts, Server Components, Server Actions, route handlers | `react-architecture` |
 | Component and hook tests (`*.test.tsx`) | `react-testing-library` |
 | Backend tests | `onion-architecture` → `references/testing.md`, `fastify-best-practices` (`app.inject`) |
 | Any TypeScript file, `tsconfig*.json`, type-level code | `typescript-expert` |
