@@ -10,3 +10,7 @@
 /site/           @s-deer
 
 # Plugins (add one line per plugin)
+/plugins/engineering-paved-path/ @s-deer
+/plugins/research-tools/         @s-deer
+/plugins/architecture-review/    @s-deer
+/plugins/sdd-engineering/        @s-deer

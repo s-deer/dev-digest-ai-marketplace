@@ -1,10 +1,27 @@
 # dev-digest-ai-marketplace
 
-A Claude Code plugin marketplace that distributes the reusable AI harness components
-extracted from DevDigest: skills, agents and workflows that a team can install, update
-and roll back like any other dependency.
+A Claude Code plugin marketplace that distributes reusable AI harness components:
+skills, agents and workflows that a team can install, update and roll back like any other
+dependency.
 
-> Status: scaffold. Plugins are added in follow-up pull requests.
+## Plugins
+
+| Plugin | What it provides | Depends on |
+|---|---|---|
+| [`sdd-engineering`](plugins/sdd-engineering/README.md) | Spec-Driven Development workflow: spec-creator, implementation-planner, implementer, test-writer, plan-verifier; `/run-plan`, `/workflow-retro`, engineering-insights | the three plugins below |
+| [`architecture-review`](plugins/architecture-review/README.md) | Read-only `architecture-reviewer` agent | `engineering-paved-path` |
+| [`research-tools`](plugins/research-tools/README.md) | Read-only `researcher` agent | — |
+| [`engineering-paved-path`](plugins/engineering-paved-path/README.md) | 12 shared engineering skills (React, Next.js, Fastify, onion architecture, Drizzle, PostgreSQL, Zod, TypeScript, testing, security, Mermaid) | — |
+
+```text
+sdd-engineering
+├── engineering-paved-path
+├── research-tools
+└── architecture-review
+    └── engineering-paved-path
+```
+
+Installing `sdd-engineering` installs its dependencies automatically.
 
 ## Usage
 

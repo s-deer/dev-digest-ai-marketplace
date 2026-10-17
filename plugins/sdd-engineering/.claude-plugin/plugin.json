@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "sdd-engineering",
+  "version": "1.0.0",
+  "description": "Spec-Driven Development workflow: spec-creator, implementation-planner, implementer, test-writer and plan-verifier agents with run-plan, workflow-retro and engineering-insights skills",
+  "author": {
+    "name": "AI Engineering"
+  },
+  "homepage": "https://github.com/s-deer/dev-digest-ai-marketplace/tree/main/plugins/sdd-engineering",
+  "repository": "https://github.com/s-deer/dev-digest-ai-marketplace",
+  "keywords": [
+    "workflow",
+    "spec-driven-development",
+    "agents",
+    "planning",
+    "verification"
+  ],
+  "dependencies": [
+    {
+      "name": "engineering-paved-path",
+      "version": "^1.0.0"
+    },
+    {
+      "name": "research-tools",
+      "version": "^1.0.0"
+    },
+    {
+      "name": "architecture-review",
+      "version": "^1.0.0"
+    }
+  ]
+}

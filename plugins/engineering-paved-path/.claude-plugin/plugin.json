@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "engineering-paved-path",
+  "version": "1.0.0",
+  "description": "Shared engineering skills: React, Next.js, Fastify, onion architecture, Drizzle, PostgreSQL, Zod, TypeScript, testing, security and Mermaid",
+  "author": {
+    "name": "AI Engineering"
+  },
+  "homepage": "https://github.com/s-deer/dev-digest-ai-marketplace/tree/main/plugins/engineering-paved-path",
+  "repository": "https://github.com/s-deer/dev-digest-ai-marketplace",
+  "keywords": [
+    "skills",
+    "react",
+    "nextjs",
+    "fastify",
+    "drizzle",
+    "postgresql",
+    "zod",
+    "typescript",
+    "testing",
+    "security",
+    "architecture"
+  ]
+}
