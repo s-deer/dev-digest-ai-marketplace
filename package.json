@@ -1,0 +1,17 @@
+{
+  "name": "marketplace-tools",
+  "private": true,
+  "type": "module",
+  "description": "Repository tooling: marketplace validation and the catalog site index builder",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "validate": "node scripts/validate-marketplace.mjs",
+    "build:index": "node scripts/build-index.mjs",
+    "test:index": "node --test scripts/build-index.test.mjs"
+  },
+  "devDependencies": {
+    "yaml": "^2.9.1"
+  }
+}

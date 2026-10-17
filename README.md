@@ -45,13 +45,24 @@ claude plugin update <plugin>@dev-digest-ai-marketplace --scope project
 
 Then run `/reload-plugins` in the open session.
 
+## Catalog site
+
+A searchable catalog of every plugin, skill and agent is published to GitHub Pages from `main`
+(see [docs/SITE-SPEC.md](docs/SITE-SPEC.md)). To run it locally:
+
+```bash
+npm ci && npm run build:index        # writes site/public/{index,releases,stats}.json and bodies/
+cd site && npm ci && npm run dev     # dev server; rebuilds the index first
+npm run build && npm run preview     # production build in site/dist
+```
+
 ## Repository layout
 
 ```text
 .claude-plugin/marketplace.json   catalog of plugins (source of truth for the list)
 plugins/<name>/                   one directory per plugin, each with .claude-plugin/plugin.json
 docs/                             guidelines, security policy, release process
-scripts/                          validation and release helpers
+scripts/                          validation, release and catalog index helpers
 site/                             static catalog UI published to GitHub Pages
 .github/workflows/                CI (validation, site build and deploy)
 ```

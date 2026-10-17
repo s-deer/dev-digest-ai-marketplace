@@ -1,0 +1,106 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 58px;
+  padding: 0 22px;
+  background: color-mix(in oklab, var(--bg-elev) 88%, transparent);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+
+.brand {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+}
+
+.brand:hover {
+  text-decoration: none;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent-fg);
+  background: var(--accent);
+  border-radius: var(--radius-sm);
+}
+
+.title {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.badge {
+  padding: 1px 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-faint);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+}
+
+.search {
+  display: flex;
+  flex: 1;
+  max-width: 520px;
+}
+
+.iconButton {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 10px;
+  font-size: 14px;
+  color: var(--text-dim);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.iconButton:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+
+.palette {
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.github {
+  flex-shrink: 0;
+  padding: 0 4px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+@media (max-width: 760px) {
+  .header {
+    gap: 8px;
+    padding: 0 16px;
+  }
+
+  .title,
+  .badge,
+  .palette,
+  .github {
+    display: none;
+  }
+}
