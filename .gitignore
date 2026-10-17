@@ -1,1 +1,5 @@
 tasks
+node_modules/
+site/dist/
+site/public/*.json
+site/public/bodies/
