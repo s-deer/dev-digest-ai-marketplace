@@ -1,0 +1,31 @@
+.empty {
+  padding: 54px 24px;
+  text-align: center;
+  background: var(--bg-elev);
+  border: 1px dashed var(--border-strong);
+  border-radius: 16px;
+}
+
+.icon {
+  margin-bottom: 10px;
+  font-size: 32px;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.text {
+  max-width: 420px;
+  margin: 0 auto;
+  color: var(--text-dim);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}

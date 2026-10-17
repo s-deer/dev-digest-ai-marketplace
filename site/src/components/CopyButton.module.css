@@ -1,0 +1,40 @@
+.button {
+  flex-shrink: 0;
+  height: 28px;
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.button:hover {
+  border-color: var(--border-strong);
+}
+
+.button[data-variant='primary'] {
+  height: 44px;
+  padding: 0 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent-fg);
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius);
+}
+
+.button[data-variant='link'] {
+  height: auto;
+  padding: 0;
+  color: var(--accent);
+  background: none;
+  border: none;
+}
+
+.button[data-copied='true']:not([data-variant='primary']) {
+  color: var(--success);
+}
