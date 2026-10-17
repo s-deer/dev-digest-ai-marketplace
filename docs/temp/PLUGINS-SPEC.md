@@ -23,7 +23,7 @@ commands remain.
 | `engineering-paved-path` | — | `react-best-practices`, `react-architecture`, `react-testing-library`, `next-best-practices`, `fastify-best-practices`, `onion-architecture`, `drizzle-orm-patterns`, `postgresql-table-design`, `zod`, `typescript-expert`, `security`, `mermaid-diagram` | — |
 | `research-tools` | `researcher` | — | — |
 | `architecture-review` | `architecture-reviewer` | — | `engineering-paved-path@^1.0.0` |
-| `sdd-engineering` | `spec-creator`, `implementation-planner`, `implementer`, `plan-verifier`, `test-writer` | `run-plan`, `workflow-retro`, `engineering-insights` | `engineering-paved-path@^1.0.0`, `research-tools@^1.0.0`, `architecture-review@^1.0.0` |
+| `sdd-engineering` | `spec-creator`, `implementation-planner`, `implementer`, `plan-verifier`, `test-writer` | `run-plan`, `workflow-retro`, `engineering-insights` (+ shared `references/`) | `engineering-paved-path@^1.0.0`, `research-tools@^1.0.0`, `architecture-review@^1.0.0` |
 
 Consumers of the engineering skills:
 
@@ -97,14 +97,16 @@ research-tools:researcher answers questions at any step, on request.
 Every plugin has `.claude-plugin/plugin.json`, `README.md` (how to use it, capabilities, permissions,
 network access), `CHANGELOG.md` and `COMPATIBILITY.md` (Claude Code >= 2.1.110).
 
-`sdd-engineering/evals/evals.json` holds a minimal behavior and negative set:
+`sdd-engineering/evals/` holds a minimal behavior and negative suite in the `claude plugin eval`
+format (`<case>/prompt.md` + `graders/*.md`):
 
-1. `spec-creator` asks clarifying questions for a vague feature idea and writes a spec without
-   implementation details, with an EARS acceptance criterion and AC-ID for each requirement.
-2. `implementation-planner` builds a plan whose steps reference only AC-IDs from the given spec and
-   returns "Clarification needed" when the spec has a gap.
-3. An unrelated request (for example, explaining closures in JavaScript) does not start the SDD agents
-   or `run-plan`.
+1. `spec-from-vague-idea`: `spec-creator` asks clarifying questions for a vague feature idea or
+   writes a spec without implementation details, with an EARS acceptance criterion and AC-ID for
+   each requirement.
+2. `plan-from-approved-spec`: `implementation-planner` builds a plan whose steps reference only
+   AC-IDs from the given spec, or returns planning questions (needs `--scaffold`).
+3. `negative-unrelated-question`: an unrelated request (explaining closures in JavaScript) does not
+   start any subagent or the workflow skills.
 
 Running the evals and the cost baseline are out of scope for this release.
 

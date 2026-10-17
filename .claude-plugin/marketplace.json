@@ -1,9 +1,34 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "dev-digest-ai-marketplace",
-  "description": "Reusable AI harness components (skills, agents, workflows) extracted from DevDigest",
+  "description": "Reusable AI harness components: engineering skills, research and review agents, and a spec-driven development workflow",
   "owner": {
     "name": "AI Engineering"
   },
-  "plugins": []
+  "plugins": [
+    {
+      "name": "engineering-paved-path",
+      "source": "./plugins/engineering-paved-path",
+      "description": "Shared engineering skills: React, Next.js, Fastify, onion architecture, Drizzle, PostgreSQL, Zod, TypeScript, testing, security and Mermaid",
+      "category": "development"
+    },
+    {
+      "name": "research-tools",
+      "source": "./plugins/research-tools",
+      "description": "Read-only researcher agent that answers a specific question from the repository or external sources with evidence and an explicit 'Not found' list",
+      "category": "development"
+    },
+    {
+      "name": "architecture-review",
+      "source": "./plugins/architecture-review",
+      "description": "Read-only architecture reviewer that checks a diff against the repository's documented boundaries and the paved-path architecture skills",
+      "category": "development"
+    },
+    {
+      "name": "sdd-engineering",
+      "source": "./plugins/sdd-engineering",
+      "description": "Spec-Driven Development workflow: spec-creator, implementation-planner, implementer, test-writer and plan-verifier agents with run-plan, workflow-retro and engineering-insights skills",
+      "category": "development"
+    }
+  ]
 }

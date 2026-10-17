@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "architecture-review",
+  "version": "1.0.0",
+  "description": "Read-only architecture reviewer that checks a diff against the repository's documented boundaries and the paved-path architecture skills",
+  "author": {
+    "name": "AI Engineering"
+  },
+  "homepage": "https://github.com/s-deer/dev-digest-ai-marketplace/tree/main/plugins/architecture-review",
+  "repository": "https://github.com/s-deer/dev-digest-ai-marketplace",
+  "keywords": [
+    "agent",
+    "review",
+    "architecture",
+    "read-only"
+  ],
+  "dependencies": [
+    {
+      "name": "engineering-paved-path",
+      "version": "^1.0.0"
+    }
+  ]
+}
