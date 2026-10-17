@@ -31,6 +31,8 @@ What you get back:
 - **External report**: the same, plus source type and date for each source, contradictions between
   sources, and a version check against the project's manifests.
 
+Reports are written in the language of the request.
+
 ## How it reads a repository
 
 It follows the reading order in the project's `CLAUDE.md` / `AGENTS.md`. Without one it reads specs,
