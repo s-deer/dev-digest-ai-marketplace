@@ -11,7 +11,7 @@ dependency.
 | [`sdd-engineering`](plugins/sdd-engineering/README.md) | Spec-Driven Development workflow: spec-creator, implementation-planner, implementer, test-writer, plan-verifier; `/run-plan`, `/workflow-retro`, engineering-insights | the three plugins below |
 | [`architecture-review`](plugins/architecture-review/README.md) | Read-only `architecture-reviewer` agent | `engineering-paved-path` |
 | [`research-tools`](plugins/research-tools/README.md) | Read-only `researcher` agent | — |
-| [`engineering-paved-path`](plugins/engineering-paved-path/README.md) | 12 shared engineering skills (React, Next.js, Fastify, onion architecture, Drizzle, PostgreSQL, Zod, TypeScript, testing, security, Mermaid) | — |
+| [`engineering-paved-path`](plugins/engineering-paved-path/README.md) | 11 shared engineering skills (React, Next.js, Fastify, onion architecture, Drizzle, PostgreSQL, Zod, TypeScript, testing, security, Mermaid) | — |
 
 ```text
 sdd-engineering
@@ -73,3 +73,8 @@ site/                             static catalog UI published to GitHub Pages
 - [docs/PLUGIN-GUIDELINES.md](docs/PLUGIN-GUIDELINES.md) - plugin structure and manifest rules
 - [docs/SECURITY.md](docs/SECURITY.md) - permissions, secrets and incident response
 - [docs/RELEASES.md](docs/RELEASES.md) - SemVer, tags, updates and rollback
+
+## License
+
+[MIT](LICENSE). Third-party skills keep their upstream licenses; see the Sources section of
+[plugins/engineering-paved-path/README.md](plugins/engineering-paved-path/README.md).
