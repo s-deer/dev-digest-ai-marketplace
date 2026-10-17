@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "research-tools",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Read-only researcher agent that answers a specific question from the repository or external sources with evidence and an explicit 'Not found' list",
   "author": {
     "name": "AI Engineering"
