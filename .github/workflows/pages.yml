@@ -1,0 +1,79 @@
+name: pages
+
+# Builds the catalog site (docs/SITE-SPEC.md). Pull requests only build it, so the check shows
+# separately from "validate"; pushes to main build it again and deploy site/dist to GitHub Pages.
+on:
+  pull_request:
+    paths:
+      - 'site/**'
+      - 'scripts/build-index.mjs'
+      - 'scripts/build-index.test.mjs'
+      - 'plugins/**'
+      - '.claude-plugin/**'
+      - 'CODEOWNERS'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/pages.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: build catalog site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            site/package-lock.json
+      - name: Install index builder
+        run: npm ci
+      - name: Test index builder
+        run: npm run test:index
+      - name: Build index
+        run: npm run build:index
+      - name: Install site
+        working-directory: site
+        run: npm ci
+      - name: Typecheck
+        working-directory: site
+        run: npm run typecheck
+      - name: Build site
+        working-directory: site
+        run: npm run build
+      - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: site/dist
+
+  deploy:
+    name: deploy
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages-deploy
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

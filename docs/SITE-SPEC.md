@@ -75,6 +75,7 @@ compatibility matrix, dependency graph view, collections, RSS.
     owner: string;           // owner.name
     repository: string;      // "<owner>/<repo>", taken from the plugin manifests
     repositoryUrl: string;
+    branch: string;          // branch used for GitHub links ("main", or CATALOG_BRANCH)
     generatedAt: string;     // ISO timestamp
     commit: string;          // GITHUB_SHA, or `git rev-parse HEAD` locally
   },
@@ -93,6 +94,7 @@ compatibility matrix, dependency graph view, collections, RSS.
     compatibility: { claudeCode: string | null; notes: string[] };
     updated: string | null;  // date of the newest CHANGELOG entry
     installCommand: string;  // "/plugin install <name>@<marketplace>"
+    sourcePath: string;      // "plugins/<name>/README.md", base for relative links
     githubUrl: string;       // tree URL of the plugin folder
     counts: { skill: number; agent: number };
     components: string[];    // artifact ids
@@ -108,10 +110,11 @@ compatibility matrix, dependency graph view, collections, RSS.
     description: string;
     invocation: string | null; // skill: "/<plugin>:<name>" (null if user-invocable: false); agent: "<plugin>:<name>"
     keywords: string[];      // inherited from the plugin
-    skill?: { argumentHint: string | null; manualOnly: boolean; userInvocable: boolean };
-    agent?: { tools: string[]; model: string | null };
+    skill?: { argumentHint: string | null; manualOnly: boolean; userInvocable: boolean; allowedTools: string[] };
+    agent?: { tools: string[]; skills: string[]; model: string | null }; // skills = preloaded, namespaced
     files: string[];         // supporting files next to SKILL.md, relative paths
     installCommand: string;  // the parent plugin's command
+    sourcePath: string;      // repository path of SKILL.md or the agent file
     githubUrl: string;       // blob URL of SKILL.md or the agent file
     body: string;            // "bodies/<id>.md"
     searchText: string;
@@ -201,10 +204,13 @@ Hash routing, so every route works on GitHub Pages without server rewrites.
   (README, SKILL.md and agent bodies).
 - Options: `prefix: true`, `fuzzy: 0.2`, `combineWith: 'OR'`, a short English stop-word list, so
   natural queries such as "skill for testing React" return useful results.
+- Results scoring below 15% of the best hit are dropped, which removes incidental matches deep in
+  long skill bodies.
 - Facets applied after the search: kind, keyword, plugin.
 - Sort: relevance (default), name, recently updated.
 - An empty query lists the whole catalog with the active facets.
-- The header search writes `#/search?q=...` (debounced).
+- The header search writes `#/search?q=...` while typing (history `replaceState`, so typing does not
+  flood the back button).
 - ⌘K / Ctrl+K opens a command palette over the same index; Enter opens the selected item, Esc closes.
 
 ## 8. Screens
@@ -223,7 +229,8 @@ The app shows loading and error states while the index is fetched.
 - Empty state when the marketplace has no plugins, linking to Getting started and `CONTRIBUTING.md`.
 
 ### Search
-- Facets in a sidebar; on narrow screens they collapse above the results.
+- Facets in a sidebar; on narrow screens they collapse into a "Filters (n)" disclosure above the
+  results.
 - Result card: kind badge, version, name, two-line description, up to three keywords, meta line
   (parent plugin for artifacts, component count for plugins), Copy install and Open.
 - Empty results state with a "Clear filters" action.
@@ -240,8 +247,8 @@ The app shows loading and error states while the index is fetched.
 - Breadcrumb: Catalog / plugin / name.
 - Kind badge, name, invocation.
 - Description.
-- Metadata: tools and model (agents); argument hint, "Manual only" and "Not user-invocable"
-  badges (skills).
+- Metadata: tools, model and preloaded skills (agents, linked when they are in the catalog);
+  allowed tools, argument hint, "Manual only" and "Not user-invocable" badges (skills).
 - Install box with the parent plugin's command and "Installed as part of `<plugin>`".
 - Documentation: the rendered body.
 - Supporting files with GitHub links.
@@ -295,10 +302,10 @@ site/
     ├── types.ts
     ├── i18n/          en.ts, t.ts
     ├── router/        useHashRoute.ts
-    ├── data/          useCatalog.ts, search.ts
-    ├── lib/           markdown.ts, clipboard.ts, theme.ts
-    ├── components/    Header, SearchInput, CommandPalette, Card, KindBadge, InstallBox,
-    │                  Markdown, Toast, EmptyState
+    ├── data/          useCatalog.tsx, search.ts
+    ├── lib/           markdown.ts, clipboard.ts, theme.ts, useMediaQuery.ts
+    ├── components/    Header, SearchInput, CommandPalette, Card, KindBadge, InstallBox, CopyButton,
+    │                  Markdown, InlineMarkdown, Toast, EmptyState
     ├── screens/       Home, Search, PluginDetail, ArtifactDetail, WhatsNew, GettingStarted, NotFound
     └── styles/        tokens.css
 ```
@@ -306,7 +313,8 @@ site/
 `.github/workflows/pages.yml`, separate from `validate.yml` so the site status is visible on its own:
 - `pull_request` (paths: `site/**`, `scripts/build-index.mjs`, `plugins/**`, `.claude-plugin/**`,
   `CODEOWNERS`, `package*.json`, the workflow file) → job **build catalog site**: `npm ci`,
-  `npm run build:index`, `npm ci` in `site/`, `npm run typecheck`, `npm run build`.
+  `npm run test:index` (`node:test` checks of the index builder), `npm run build:index`, `npm ci`
+  in `site/`, `npm run typecheck`, `npm run build`.
 - `push` to `main` and `workflow_dispatch` → the same build, `actions/upload-pages-artifact`
   with `site/dist`, then job **deploy** with `actions/deploy-pages`. Only the deploy job gets
   `pages: write` and `id-token: write`; `concurrency: pages`.
