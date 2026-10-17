@@ -1,0 +1,12 @@
+# Every plugin directory must have an explicit owner entry.
+# scripts/validate-marketplace.mjs fails if a plugin listed in
+# .claude-plugin/marketplace.json is not covered by this file.
+
+# Marketplace-level files
+/.claude-plugin/ @s-deer
+/.github/        @s-deer
+/docs/           @s-deer
+/scripts/        @s-deer
+/site/           @s-deer
+
+# Plugins (add one line per plugin)
