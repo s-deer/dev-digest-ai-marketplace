@@ -73,6 +73,7 @@ site/                             static catalog UI published to GitHub Pages
 - [docs/PLUGIN-GUIDELINES.md](docs/PLUGIN-GUIDELINES.md) - plugin structure and manifest rules
 - [docs/SECURITY.md](docs/SECURITY.md) - permissions, secrets and incident response
 - [docs/RELEASES.md](docs/RELEASES.md) - SemVer, tags, updates and rollback
+- [docs/COST-BASELINE.md](docs/COST-BASELINE.md) - cost baseline of the spec + plan workflow and one optimization
 
 ## License
 
