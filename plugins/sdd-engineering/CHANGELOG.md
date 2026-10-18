@@ -3,6 +3,14 @@
 All notable changes to this plugin are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and versions follow SemVer.
 
+## [Unreleased]
+
+### Changed
+- `implementation-planner` no longer preloads the nine `engineering-paved-path` skills. It loads only
+  the skills that `references/skill-routing.md` maps to the plan's files, with the Skill tool. In the
+  cost baseline, this cut the planner's first-call context from about 49k to about 17k tokens and the
+  cost per successful spec + plan workflow by 13% (see `docs/COST-BASELINE.md` in the repository).
+
 ## [1.0.0] - 2026-10-17
 
 ### Added
