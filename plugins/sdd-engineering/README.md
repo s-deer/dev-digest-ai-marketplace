@@ -35,7 +35,7 @@ The installer also installs the dependencies:
 
 | Plugin | Range | Provides |
 |---|---|---|
-| `engineering-paved-path` | ^1.0.0 | the engineering skills the agents preload |
+| `engineering-paved-path` | ^1.0.0 | the engineering skills the agents preload (the planner loads them on demand) |
 | `research-tools` | ^1.0.0 | `researcher` for delegated discovery |
 | `architecture-review` | ^1.0.0 | `architecture-reviewer`, the review gate in `run-plan` |
 

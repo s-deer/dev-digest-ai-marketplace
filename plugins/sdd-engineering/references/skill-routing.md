@@ -24,6 +24,7 @@ name, for example `engineering-paved-path:onion-architecture`.
 | Authentication, authorization, tenancy, user input handling, secrets, file uploads, HTML rendering of untrusted content, shell or git commands built from input | `security` |
 | Diagrams in specs, plans and docs | `mermaid-diagram` |
 
-`security` is not preloaded into any agent. `implementation-planner` reads it when a file routes
-to it and lists the points under "Notes for reviewers → Security"; `implementer` loads it with the
-Skill tool for those files.
+`implementation-planner` preloads none of these skills: it loads only the ones its files route to
+with the Skill tool, `security` included, and lists security points under "Notes for reviewers →
+Security". `security` is not preloaded into any agent; `implementer` loads it with the Skill tool
+for those files.
