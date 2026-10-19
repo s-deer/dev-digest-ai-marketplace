@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
-  "name": "dev-digest-ai-marketplace",
-  "description": "Reusable AI harness components: engineering skills, research and review agents, and a spec-driven development workflow",
+  "name": "dev-digest-ai-marketplace-stable",
+  "description": "Stable channel: the verified 1.0.0 release of the reusable AI harness components (engineering skills, research and review agents, spec-driven development workflow)",
   "owner": {
     "name": "AI Engineering"
   },
