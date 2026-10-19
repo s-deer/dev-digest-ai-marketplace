@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "sdd-engineering",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Spec-Driven Development workflow: spec-creator, implementation-planner, implementer, test-writer and plan-verifier agents with run-plan, workflow-retro and engineering-insights skills",
   "author": {
     "name": "AI Engineering"
