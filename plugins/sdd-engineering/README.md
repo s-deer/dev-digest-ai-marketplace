@@ -47,8 +47,8 @@ Then run `/reload-plugins` or start a new session, and check with `claude plugin
 
 | Agent | Model | Tools | Input → output |
 |---|---|---|---|
-| `sdd-engineering:spec-creator` | opus | Read, Grep, Glob, Write (one spec file) | idea and design → one spec with EARS acceptance criteria and stable AC-IDs, status `draft` (or blocking questions) |
-| `sdd-engineering:implementation-planner` | sonnet | Read, Grep, Glob, read-only Bash | approved spec → Development Plan S1..Sn with AC coverage, file inventory, skills and verify commands (or "Clarification needed") |
+| `sdd-engineering:spec-creator` | opus | Read, Grep, Glob, Write (one spec file) | idea and design → one spec with EARS acceptance criteria and stable AC-IDs, status `draft` (or blocking questions); stays `draft` while any requirement has no acceptance criterion |
+| `sdd-engineering:implementation-planner` | sonnet | Read, Grep, Glob, read-only Bash, Skill (loads routed skills on demand) | approved spec → Development Plan S1..Sn with AC coverage, file inventory, skills and verify commands (or "Clarification needed") |
 | `sdd-engineering:implementer` | sonnet | Read, Grep, Glob, Edit, Write, Bash, Skill | approved plan (+ step ids) → code, tests, implementation report |
 | `sdd-engineering:test-writer` | sonnet | Read, Grep, Glob, Edit, Write, Bash (test files only) | plan steps, a file or the diff → tests at the seams, test report |
 | `sdd-engineering:plan-verifier` | sonnet | Read, Grep, Glob, Bash (verification commands only) | plan (+ spec, reports) → traceability matrix and verdict |
@@ -117,7 +117,9 @@ conventions instead. See `references/project-conventions.md`.
 
 ## Evals
 
-`evals/` holds behavior and negative cases for `claude plugin eval`; see `evals/README.md`.
+`evals/` holds behavior and negative cases for `claude plugin eval`. Run them with
+`scripts/eval-plugin.sh plugins/sdd-engineering` from the marketplace repository; `evals/README.md`
+explains why a plain `claude plugin eval` cannot load this plugin.
 
 ## Owner
 

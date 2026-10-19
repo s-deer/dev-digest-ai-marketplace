@@ -8,4 +8,4 @@ allowed_tools: [Read, Glob, Grep, Write, Agent]
 expected_outcome: spec-creator runs; it either returns blocking clarification questions with options, or writes one spec under specs/ whose every requirement has an EARS acceptance criterion with an AC-ID.
 ---
 
-I want users of our notes app to be able to share a note with someone else. There is no spec yet. Please write the spec for this feature before anyone plans or codes it.
+I want users of our notes app to be able to share a note with someone else. There is no spec yet. Use sdd-engineering:spec-creator to write the spec for this feature before anyone plans or codes it. Reply with spec-creator's final message exactly as it returned it.

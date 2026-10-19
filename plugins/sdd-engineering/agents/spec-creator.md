@@ -64,13 +64,13 @@ Blocking-questions format:
 
 ## Step 4 — write the spec
 
-Language: English unless the project instructions say otherwise. Status starts as `draft`; only the user can approve it (you change it to `approved` only when the user says so in the current conversation).
+Language: English unless the project instructions say otherwise. Status starts as `draft`; only the user can approve it (you change it to `approved` only when the user says so in the current conversation, and only when the requirement coverage gate in Step 5 passes).
 
 What belongs: goals, user-visible behaviour, workflow diagrams (Mermaid is fine), service/module communication, contracts (field names, shapes, error semantics), constraints, edge cases. What does NOT belong: file or function names to create, library choices, table/column definitions, component hierarchy, code, step order. If you catch yourself describing how, rewrite it as the observable behaviour it must produce.
 
 ### Acceptance criteria — EARS with stable IDs
 
-Every functional requirement has at least one acceptance criterion; the spec is not complete until it does. Each criterion is one testable sentence in an EARS pattern, with an ID `AC-1`, `AC-2`, … that is never renumbered or reused (when a criterion is dropped, mark it `AC-n (removed)`):
+Every functional requirement has at least one acceptance criterion; the spec is not complete until it does (enforced by the coverage gate in Step 5). Each criterion is one testable sentence in an EARS pattern, with an ID `AC-1`, `AC-2`, … that is never renumbered or reused (when a criterion is dropped, mark it `AC-n (removed)`):
 
 - Ubiquitous: `The <system> shall <response>.`
 - Event-driven: `When <trigger>, the <system> shall <response>.`
@@ -128,10 +128,25 @@ Every criterion must be observable and verifiable without reading the implementa
 <Per AC or group: how a tester would observe it (hermetic unit test, integration test, browser flow, manual check). Hints only — the test writer decides the tests.>
 ```
 
-## Step 5 — self-check before finishing
+## Step 5 — requirement coverage gate
+
+Run this gate on every spec you write or finish, including a draft someone else started. It is a gate, not advice: a spec that fails it is never `approved` and is not handed to planning.
+
+1. List every requirement: each user story `US-n` and each functional requirement the user stated in the conversation that is not yet a user story.
+2. For each requirement, find the acceptance criteria that reference it (`AC-n (US-n)`, or the traceability table). A requirement with no such criterion is **uncovered**. `AC-n (removed)` does not count.
+3. For each uncovered requirement, do one of these, never nothing:
+   - add a criterion you can derive from what the user said, marked `(proposed)` after its ID, for example `**AC-7** (US-3) (proposed): When …, the … shall …`; or
+   - add `[NEEDS CLARIFICATION: acceptance criterion for US-n]` under Acceptance criteria and to Open questions, when the behaviour is not defined well enough to write one.
+4. Decide the status:
+   - All requirements have at least one criterion that is not `(proposed)` and nothing is `[NEEDS CLARIFICATION]` → the gate passes; the status may become `approved` if the user approved.
+   - Otherwise the gate fails → the status stays `draft`, **even if the user asked you to approve it or said it is good enough**. Say why in the final message and list the uncovered IDs; the user resolves them (accepts the proposed criteria, answers the questions) and then approves.
+5. Record the result in the final message: `Coverage: <covered>/<total> requirements have an acceptance criterion`.
+
+## Step 6 — self-check before finishing
 
 Tick every item; fix the spec if any fails:
 
+- [ ] The coverage gate ran; the status matches its result.
 - [ ] No implementation detail (files, functions, libraries, tables, step order).
 - [ ] Every user story has at least one AC; every AC appears in the traceability table.
 - [ ] Every AC is a single EARS sentence, testable, with a stable ID.
@@ -146,7 +161,8 @@ Tick every item; fix the spec if any fails:
 
 ```
 ## Spec written: <path>
-**Status:** draft
+**Status:** draft | approved
+**Coverage:** <covered>/<total> requirements have an acceptance criterion
 **Location convention:** <from project instructions | default>
 **Summary:** <1–2 sentences>
 **Design analysis highlights:** <gaps / corner cases / cross-module points / UX proposals you added>
@@ -155,4 +171,11 @@ Tick every item; fix the spec if any fails:
 **Lessons applied:** <entry titles> | none
 **Suggested research:** <what research-tools:researcher should look up> | none
 **Next:** answer the questions, approve the spec, then run sdd-engineering:implementation-planner on <path>.
+```
+
+When the coverage gate fails, replace the `Next` line with this block and do not suggest planning:
+
+```
+**Spec incomplete:** <US-n, …> have no acceptance criterion. The status stays draft even though approval was requested.
+**To finish:** accept or edit the proposed criteria <AC-IDs> and answer <questions>; then approve the spec. Do not run implementation-planner yet.
 ```

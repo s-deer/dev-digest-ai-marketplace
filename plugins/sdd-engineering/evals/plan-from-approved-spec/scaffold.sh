@@ -45,8 +45,25 @@ export class NoteStore {
 }
 CODE
 cat > package.json <<'JSON'
-{ "name": "notes", "private": true, "type": "module", "scripts": { "test": "vitest run", "typecheck": "tsc --noEmit" } }
+{
+  "name": "notes",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "vitest run", "typecheck": "tsc --noEmit" },
+  "devDependencies": { "typescript": "^5.6.0", "vitest": "^2.1.0" }
+}
 JSON
+cat > tsconfig.json <<'JSON'
+{ "compilerOptions": { "target": "ES2022", "module": "NodeNext", "moduleResolution": "NodeNext", "strict": true, "noEmit": true }, "include": ["src"] }
+JSON
+cat > CLAUDE.md <<'MD'
+# notes
+
+In-memory notes library. Source in `src/`, tests next to the code as `src/<name>.test.ts` (Vitest).
+Dependencies are installed with `npm ci`; the tooling is complete, so plans do not change it.
+
+Verification: `npm run typecheck` and `npm test`. Both must pass before a change is done.
+MD
 git init -q
 git add -A
 git -c user.name=eval -c user.email=eval@example.com commit -qm init
